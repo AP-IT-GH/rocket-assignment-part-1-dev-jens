@@ -6,12 +6,20 @@ using UnityEngine.SceneManagement;
 public class NextLevel : MonoBehaviour
 {
     public string LevelToLoad = "";
-
+    public GameObject complete;
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" & LevelToLoad != "")
+        if (LevelToLoad == "end")
         {
+            complete.SetActive(true);
+        }
+        
+        if (other.gameObject.tag == "Player" && LevelToLoad != "" && complete == null)
+        {
+           
             SceneManager.LoadScene(LevelToLoad);
+        
+           
         }
     }
 }
